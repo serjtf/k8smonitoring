@@ -162,6 +162,9 @@ helm install prometheus prometheus-community/prometheus \
 
 kubectl get all -n prometheus
 
+## If necessary, enable Prometheus port forwarding:
+# kubectl port-forward -n prometheus deploy/prometheus-server 8080:9090
+
 ### DEPLOY GRAFANA ###
 
 mkdir ${HOME}/environment/grafana
