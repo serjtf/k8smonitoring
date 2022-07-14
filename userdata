@@ -164,6 +164,8 @@ kubectl get all -n prometheus
 
 ## If necessary, enable Prometheus port forwarding:
 # kubectl port-forward -n prometheus deploy/prometheus-server 8080:9090
+# for local port forwarding use something like: 
+# ssh -L 127.0.0.1:9090:127.0.0.1:8080 ec2-user@XXX.XXX.XXX.XXX -i /PathTo/keypair.pem
 
 ### DEPLOY GRAFANA ###
 
