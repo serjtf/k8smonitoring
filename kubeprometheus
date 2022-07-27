@@ -13,6 +13,10 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 sudo ./aws/install
 
+# Install jq, envsubst (from GNU gettext utilities) and bash-completion
+
+sudo yum -y install jq gettext bash-completion moreutils
+
 # Install yq for yaml processing
 
 echo 'yq() {
@@ -116,6 +120,10 @@ echo "export ROLE_NAME=${ROLE_NAME}" | tee -a ~/.bash_profile
 
 # Install kube-prometheus
 
+# install helm
+
+curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
 kubectl create namespace monitoring
 # Add prometheus-community repo
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -130,4 +138,7 @@ helm install prometheus prometheus-community/kube-prometheus-stack --namespace m
 kubectl get pods -n monitoring
 
 # Now execute
+# on the console server:
 # kubectl port-forward svc/prometheus-grafana -n monitoring 3000:80
+# on the localhost:
+# ssh -L 127.0.0.1:8080:127.0.0.1:3000 ec2-user@XXX.XXX.XXX.XXX -i PathTo/keypair.pem
