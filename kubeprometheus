@@ -142,3 +142,11 @@ kubectl get pods -n monitoring
 # kubectl port-forward svc/prometheus-grafana -n monitoring 3000:80
 # on the localhost:
 # ssh -L 127.0.0.1:8080:127.0.0.1:3000 ec2-user@XXX.XXX.XXX.XXX -i PathTo/keypair.pem
+
+###
+### CLEANUP ####
+
+### helm uninstall prometheus --namespace monitoring
+### kubectl delete ns monitoring
+
+### eksctl delete cluster --name=eksworkshop-eksctl
